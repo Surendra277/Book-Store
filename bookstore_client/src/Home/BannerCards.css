@@ -36,6 +36,9 @@
  background-size: contain;
 
 }
+.dark-mode {
+    border: 1px solid white;
+  }
 
 .banner .swiper-slide:nth-child(4n) {
     background-image: url("src/assets/Book-img/book4.jpg");

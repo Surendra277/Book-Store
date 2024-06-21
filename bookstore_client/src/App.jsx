@@ -6,10 +6,7 @@ import Navbar from './component/Navbar'
 
 function App() {
 
-
- 
-
-  return (
+ return (
     <>
     <Navbar/>
       <Outlet/>

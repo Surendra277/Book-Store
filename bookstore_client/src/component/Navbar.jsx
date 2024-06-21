@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { FaBarsStaggered, FaBookOpen, FaXmark } from "react-icons/fa6";
+import Darkmode from './Darkmode';
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,10 +36,11 @@ const Navbar = () => {
     { link: "Shop", path: "/shop" },
     { link: "Sell Your Book", path: "/admin/dashboard" },
     { link: "Blog", path: "/blog" },
+    
   ]
   return (
     <>
-      <header className='w-full bg-transparent fixed top-0 right-0 left-0 transition-all ease-in duration-300'>
+      <header className='w-full bg-transparent fixed top-0 right-0 left-0 dark:bg-black dark:text-white-700   transition-all ease-in duration-300'>
         <nav className={`py-4 lg:px-24 px-4 ${isSticky?"sticky top-0 left-0 right-0 bg-blue-300":""}`}>
 
           <div className='flex justify-between items-center text-base '>
@@ -46,12 +49,11 @@ const Navbar = () => {
             {/* nav item for lg devices */}
             <ul className='md:flex space-x-12 hidden'>
               {
-                navItems.map(({ link, path }) => <Link key={path} to={path} className='block text-base text-black uppercase cursor-pointer hover:text-blue-700'>{link}</Link>)
+                navItems.map(({ link, path }) => <Link key={path} to={path} className='block text-base text-black uppercase cursor-pointer dark:text-white dark:hover:text-yellow-500 hover:text-blue-700'>{link}</Link>)
               }
+             <Darkmode/>
             </ul>
-            <div>
-              <button><FaBarsStaggered className='w-5 hover:text-blue-700' /></button>
-            </div>
+            
 
             {/* menu btn for mobile devices */}
 
@@ -71,6 +73,7 @@ const Navbar = () => {
             {
               navItems.map(({ link, path }) => <Link key={path} to={path} className='block text-base text-white uppercase cursor-pointer '>{link}</Link>)
             }
+            <Darkmode/>
           </div>
         </nav>
       </header>
