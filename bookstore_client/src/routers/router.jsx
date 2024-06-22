@@ -8,6 +8,8 @@ import Shop from "../Shop/Shop";
 import About from "../component/About";
 import Blog from "../component/Blog";
 import SingleBook from "../component/SingleBook";
+import Signin from "../component/Signin";
+import Cart from "../component/Cart";
 
   const router = createBrowserRouter([
     {
@@ -37,6 +39,14 @@ import SingleBook from "../component/SingleBook";
         {
             path: '/Shop',
             element: <Shop/>
+        },
+        {
+            path: '/Signin',
+            element: <Signin/>
+        },
+        {
+            path: '/Cart',
+            element: <Cart/>
         },
       ]
     },
