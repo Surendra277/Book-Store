@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import { FaBarsStaggered, FaBookOpen, FaXmark } from "react-icons/fa6";
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FaBarsStaggered,FaXmark } from "react-icons/fa6";
 import Darkmode from './Darkmode';
-
+import logo from '../assets/Logo.png'
+import App from '../App.css'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const location = useLocation(); // Get the current location
 
-  //toggleMenu
+  // Toggle Menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   }
@@ -17,15 +19,14 @@ const Navbar = () => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
         setIsSticky(true);
-      }
-      else {
+      } else {
         setIsSticky(false);
       }
     }
 
     window.addEventListener("scroll", handleScroll);
     return () => {
-      window.addEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     }
 
   }, [])
@@ -38,44 +39,52 @@ const Navbar = () => {
     { link: "Blog", path: "/blog" },
     { link: "Cart", path: "/cart" },
     { link: "Signin", path: "/signin" },
-    
   ]
+
   return (
     <>
-      <header className='w-full bg-transparent fixed top-0 right-0 left-0 dark:bg-black dark:text-white-700   transition-all ease-in duration-300'>
-        <nav className={`py-4 lg:px-24 px-4 ${isSticky?"sticky top-0 left-0 right-0 bg-blue-300":""}`}>
-
+      <header className='w-full bg-transparent fixed top-0 right-0 left-0 dark:bg-black dark:text-white-700 transition-all ease-in duration-300'>
+        <nav className={`py-4 lg:px-24 px-4 ${isSticky ? "sticky top-0 left-0 right-0 bg-blue-300" : ""}`}>
           <div className='flex justify-between items-center text-base '>
-            <Link to="/" className='text-2xl font-bold text-blue-700 flex items-center gap-2'><FaBookOpen />BiblioMart</Link>
+            <div className=' text-2xl font-bold font-serif text-blue-700 flex items-center'>
+              <img src={logo} alt="" className='w-10' id='logo' />
+              BiblioMart
+            </div>
 
             {/* nav item for lg devices */}
             <ul className='md:flex space-x-12 hidden'>
-              {
-                navItems.map(({ link, path }) => <Link key={path} to={path} className='block text-base text-black uppercase cursor-pointer dark:text-white dark:hover:text-yellow-500 hover:text-blue-700'>{link}</Link>)
-              }
-             <Darkmode/>
+              {navItems.map(({ link, path }) => (
+                <Link
+                  key={path}
+                  to={path}
+                  className={`block text-base text-black uppercase cursor-pointer dark:text-white dark:hover:text-yellow-500 hover:text-blue-700 ${location.pathname === path ? 'font-bold' : ''}`}
+                >
+                  {link}
+                </Link>
+              ))}
+              <Darkmode />
             </ul>
-            
 
             {/* menu btn for mobile devices */}
-
             <div className='md:hidden'>
-
               <button onClick={toggleMenu} className='text-black focus:outline-none'>
-                {
-                  isMenuOpen ? <FaXmark className='h-5 w-5 text-black' /> : <FaBarsStaggered />
-                }
+                {isMenuOpen ? <FaXmark className='h-5 w-5 text-black' /> : <FaBarsStaggered />}
               </button>
             </div>
           </div>
 
-          {/* menu btn for mobile devices */}
-
-          <div className={`space-y-4 px-4 mt-16 py-7 bg-blue-700 ${ isMenuOpen?"block fixed top-0 right-0 left-0":"hidden" }`}>
-            {
-              navItems.map(({ link, path }) => <Link key={path} to={path} className='block text-base text-white uppercase cursor-pointer '>{link}</Link>)
-            }
-            <Darkmode/>
+          {/* menu for mobile devices */}
+          <div className={`space-y-4 px-4 mt-16 py-7 bg-blue-700 ${isMenuOpen ? "block fixed top-0 right-0 left-0" : "hidden"}`}>
+            {navItems.map(({ link, path }) => (
+              <Link
+                key={path}
+                to={path}
+                className={`block text-base text-white uppercase cursor-pointer ${location.pathname === path ? 'font-bold' : ''}`}
+              >
+                {link}
+              </Link>
+            ))}
+            <Darkmode />
           </div>
         </nav>
       </header>
@@ -83,4 +92,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;

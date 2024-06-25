@@ -10,6 +10,7 @@ import Blog from "../component/Blog";
 import SingleBook from "../component/SingleBook";
 import Signin from "../component/Signin";
 import Cart from "../component/Cart";
+import SignUp from "../component/SignUp";
 
   const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ import Cart from "../component/Cart";
         {
             path: '/Signin',
             element: <Signin/>
+        },
+        {
+            path: '/Signup',
+            element: <SignUp/>
         },
         {
             path: '/Cart',
