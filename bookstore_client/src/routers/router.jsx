@@ -4,10 +4,10 @@ import {
   } from "react-router-dom";
 import App from "../App";
 import Home from "../Home/Home";
-import Shop from "../Shop/Shop";
 import About from "../component/About";
+import Shop from "../Shop/Shop";
+import SingleBook from "../Shop/SingleBook";
 import Blog from "../component/Blog";
-import SingleBook from "../component/SingleBook";
 import Signin from "../component/Signin";
 import Cart from "../component/Cart";
 import SignUp from "../component/SignUp";
@@ -33,10 +33,7 @@ import SignUp from "../component/SignUp";
             path: '/blog',
             element: <Blog/>
         },
-        {
-            path: '/singleBook',
-            element: <SingleBook/>
-        },
+    
         {
             path: '/Shop',
             element: <Shop/>
@@ -46,12 +43,16 @@ import SignUp from "../component/SignUp";
             element: <Signin/>
         },
         {
-            path: '/Signup',
+            path: 'Signup',
             element: <SignUp/>
         },
         {
             path: '/Cart',
             element: <Cart/>
+        },
+        {
+            path: '/book/ :id',
+            element: <SingleBook/>
         },
       ]
     },

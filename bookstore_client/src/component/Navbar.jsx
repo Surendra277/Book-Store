@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBarsStaggered,FaXmark } from "react-icons/fa6";
+import { FaBarsStaggered,FaBookOpen,FaXmark } from "react-icons/fa6";
 import Darkmode from './Darkmode';
 import logo from '../assets/Logo.png'
 
@@ -45,10 +45,10 @@ const Navbar = () => {
     <>
       <header className='w-full bg-transparent fixed top-0 right-0 left-0 dark:bg-black dark:text-white-700 transition-all ease-in duration-300'>
         <nav className={`py-4 lg:px-24 px-4 ${isSticky ? "sticky top-0 left-0 right-0 bg-blue-300" : ""}`}>
-          <div className='flex justify-between items-center text-base '>
-            <div className=' text-2xl font-bold font-serif text-blue-700 flex items-center'>
-              <img src={logo} alt="" className='w-10' id='logo' />
-              BiblioMart
+          <div className='flex justify-between font-serif items-center text-base '>
+            <div className=' font-extralight flex justify-between items-center text-base'>
+              <Link to='/' className='text-2xl font-bold text-blue-700 flex items-center gap-2'><FaBookOpen/>BiblioMart</Link>
+             
             </div>
 
             {/* nav item for lg devices */}
