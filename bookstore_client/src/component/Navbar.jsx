@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaBarsStaggered,FaXmark } from "react-icons/fa6";
 import Darkmode from './Darkmode';
 import logo from '../assets/Logo.png'
-import App from '../App.css'
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
