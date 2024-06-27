@@ -50,11 +50,11 @@ const Review = () => {
 
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nam, ducimus nisi voluptatibus laborum quasi nostrum quibusdam cum ad eum officiis. Fuga maiores quaerat dolorem sapiente! Provident harum nihil minima.
-
+                    Fantastic service and speedy delivery! The selection is vast and the prices are unbeatable. My books arrived in perfect condition. Highly recommended for all book lovers.
+                        
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                        <p className='text-base'>CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>Sydney Sweeney</h5>
+                        <p className='text-base'>American Actress</p>
                     </p>
                 </div>
             </div>
@@ -70,11 +70,11 @@ const Review = () => {
 
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nam, ducimus nisi voluptatibus laborum quasi nostrum quibusdam cum ad eum officiis. Fuga maiores quaerat dolorem sapiente! Provident harum nihil minima.
+                    Great experience shopping here! The website is easy to navigate, and the customer service is top-notch. My order arrived quickly, and the books were well-packaged. Will shop again.
 
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                        <p className='text-base'>CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>David Laid</h5>
+                        <p className='text-base'>Fitness Influencer</p>
                     </p>
                 </div>
             </div>
@@ -90,11 +90,11 @@ const Review = () => {
 
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nam, ducimus nisi voluptatibus laborum quasi nostrum quibusdam cum ad eum officiis. Fuga maiores quaerat dolorem sapiente! Provident harum nihil minima.
+                    Wide range of books and excellent customer service. I found several rare titles I've been searching for. Delivery was fast, and the books arrived in pristine condition. Very pleased.
 
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                        <p className='text-base'>CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>Kylie Jenner</h5>
+                        <p className='text-base'>American Socialite</p>
                     </p>
                 </div>
             </div>
@@ -110,11 +110,11 @@ const Review = () => {
 
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nam, ducimus nisi voluptatibus laborum quasi nostrum quibusdam cum ad eum officiis. Fuga maiores quaerat dolorem sapiente! Provident harum nihil minima.
-
+                    Impressive selection and user-friendly website. The books were delivered promptly and in perfect condition. The customer support team was very helpful. Will definitely buy from here again.
+                       
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                        <p className='text-base'>CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>Roger Federer</h5>
+                        <p className='text-base'>Swiss Tennis Player</p>
                     </p>
                 </div>
             </div>
@@ -130,11 +130,11 @@ const Review = () => {
 
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nam, ducimus nisi voluptatibus laborum quasi nostrum quibusdam cum ad eum officiis. Fuga maiores quaerat dolorem sapiente! Provident harum nihil minima.
+                    Great prices and quick shipping! The book descriptions were helpful, and I found exactly what I was looking for. The eco-friendly packaging was a nice touch. Highly recommended.
 
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                        <p className='text-base'>CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>Ana De Armas</h5>
+                        <p className='text-base'>Spanish Actress</p>
                     </p>
                 </div>
             </div>
@@ -150,11 +150,11 @@ const Review = () => {
 
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nam, ducimus nisi voluptatibus laborum quasi nostrum quibusdam cum ad eum officiis. Fuga maiores quaerat dolorem sapiente! Provident harum nihil minima.
-
+                    Excellent experience! The variety of books is amazing, and the ordering process was smooth. Fast delivery and the books arrived in great shape. Will be back for more.
+                       
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                        <p className='text-base'>CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>Mark</h5>
+                        <p className='text-base'>CEO, Facebook</p>
                     </p>
                 </div>
             </div>
@@ -170,11 +170,11 @@ const Review = () => {
 
                 <div className='mt-7'>
                     <p className='mb-5'>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae nam, ducimus nisi voluptatibus laborum quasi nostrum quibusdam cum ad eum officiis. Fuga maiores quaerat dolorem sapiente! Provident harum nihil minima.
+                    Wonderful bookstore with an extensive collection. Easy to use website and outstanding customer service. My books arrived quickly and were well-protected. Could not be more happier with my purchase.
 
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
-                        <h5 className='text-lg font-medium'>Mark Ping</h5>
-                        <p className='text-base'>CEO, ABC Company</p>
+                        <h5 className='text-lg font-medium'>Jennifer Lawrence</h5>
+                        <p className='text-base'>American Actress</p>
                     </p>
                 </div>
             </div>
@@ -187,4 +187,4 @@ const Review = () => {
   )
 }
 
-export default Review
+export default Review;
