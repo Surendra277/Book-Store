@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBarsStaggered,FaBookOpen,FaXmark } from "react-icons/fa6";
+import { BsCart4 } from "react-icons/bs";
 import Darkmode from './Darkmode';
 import logo from '../assets/Logo.png'
 
@@ -37,8 +38,7 @@ const Navbar = () => {
     { link: "Shop", path: "/shop" },
     { link: "Sell Your Book", path: "/admin/dashboard" },
     { link: "Blog", path: "/blog" },
-    { link: "Cart", path: "/cart" },
-    { link: "Signin", path: "/signin" },
+    { link: "Sign in", path: "/signin" },
   ]
 
   return (
@@ -62,6 +62,7 @@ const Navbar = () => {
                   {link}
                 </Link>
               ))}
+              <Link to='./Cart'><BsCart4  className='dark:bg-white dark:w-6 w-6 '/></Link>
               <Darkmode />
             </ul>
 
