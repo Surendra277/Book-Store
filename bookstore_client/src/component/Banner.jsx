@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { BiSearch } from "react-icons/bi";
 import BannerCard from '../Home/BannerCard';
 
