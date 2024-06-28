@@ -6,9 +6,10 @@ const Shop = () => {
   const[books, setBooks] = useState([]);
 
   useEffect( () => {
-    fetch("").then(res => res.json()).then(data => setBooks(data));
+    fetch("http://localhost:3000/api/book").then(res => res.json()).then(data => setBooks(data));
   }, [])
   return ( 
+  
     <div className='mt-28 px-4 lg:px24'>
 <h2 className='text-5xl font-bold text-center'>All Books are here</h2>
     
@@ -31,6 +32,7 @@ const Shop = () => {
         }
        </div>
     </div>
+  
   )
 }
 
