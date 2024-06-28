@@ -1,0 +1,70 @@
+   .about-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .hero-section {
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    color: rgba(255, 255, 255, 0.849);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  .hero-section h1 {
+    font-size: 4.5em; /* Adjusted for better readability */
+    margin: 0;
+  }
+  
+  .content-section {
+    padding: 20px; /* Increased padding for better spacing */
+  }
+  
+  .owner-section,
+  .team-section {
+    display: flex;
+    align-items: center;
+    margin: 40px 0; /* Slightly increased margin for better separation */
+  }
+  
+  .owner-section img,
+  .team-section img {
+    width: 200px;
+    height: 200px;
+    border: 50%;
+    margin-right: 20px;
+  }
+  
+  .text {
+    max-width: 1200px;
+    line-height: 1.6; /* Increased line height for better readability */
+  }
+  
+  .text h2 {
+    font-size: 2em; /* Made headings larger */
+    margin-top: 0;
+  }
+  
+  .text h3 {
+    font-size: 1.75em; /* Added styling for h3 */
+    margin-top: 20px; /* Added margin for better spacing */
+  }
+  
+  .text h1 {
+    font-size: 2.5em; /* Added styling for h1 within text */
+    margin-top: 30px; /* Added margin for better spacing */
+  }
+  
+  .text p {
+    font-size: 1.1em; /* Increased paragraph text size */
+    margin: 10px 0;
+    text-align: justify; /* Justified text for better alignment */
+  }
+  
+  .text strong {
+    font-weight: bold; /* Ensure bold text stands out */
+  }
+  
