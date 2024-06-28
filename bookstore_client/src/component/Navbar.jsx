@@ -62,7 +62,7 @@ const Navbar = () => {
                   {link}
                 </Link>
               ))}
-              <Link to='./Cart'><BsCart4  className='dark:bg-white dark:w-6 w-6 '/></Link>
+              <Link className='flex justify-between items-center' to='./Cart'><BsCart4  className='dark:text-white w-5 h-5 '/></Link>
               <Darkmode />
             </ul>
 
