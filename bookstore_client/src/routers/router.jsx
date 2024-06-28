@@ -1,7 +1,7 @@
 import {
-    createBrowserRouter,
-    RouterProvider,
-  } from "react-router-dom";
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import App from "../App";
 import Home from "../Home/Home";
 import About from "../component/About";
@@ -12,51 +12,45 @@ import Signin from "../component/Signin";
 import Cart from "../component/Cart";
 import SignUp from "../component/SignUp";
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App/>,
-      children: [
-        {
-            path: '/',
-            element: <Home/>
-        },
-        {
-            path: '/Shop',
-            element: <Shop/>
-        },
-        {
-            path: '/about',
-            element: <About/>
-        },
-        {
-            path: '/blog',
-            element: <Blog/>
-        },
-    
-        {
-            path: '/Shop',
-            element: <Shop/>
-        },
-        {
-            path: '/Signin',
-            element: <Signin/>
-        },
-        {
-            path: 'Signup',
-            element: <SignUp/>
-        },
-        {
-            path: '/Cart',
-            element: <Cart/>
-        },
-        {
-            path: '/book/ :id',
-            element: <SingleBook/>
-        },
-      ]
-    },
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,  
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/book/:id",
+        element: <SingleBook />,
+      },
+    ],
+  },
+  {
+    path: "/signin",
+    element: <Signin />, 
+  },
+  {
+    path: "/signup",
+    element: <SignUp />, 
+  },
+]);
 
-  ]); 
-
-  export default router;
+export default router;
