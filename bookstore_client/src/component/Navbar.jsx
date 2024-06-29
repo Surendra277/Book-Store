@@ -36,7 +36,7 @@ const Navbar = () => {
     { link: "Home", path: "/" },
     { link: "About", path: "/about" },
     { link: "Shop", path: "/shop" },
-    { link: "Sell Your Book", path: "/admin/dashboard" },
+    // { link: "Sell Your Book", path: "/admin/dashboard" },
     { link: "Blog", path: "/blog" },
     { link: "Sign in", path: "/signin" },
   ]
@@ -62,7 +62,7 @@ const Navbar = () => {
                   {link}
                 </Link>
               ))}
-              <Link to='./Cart'><BsCart4  className='dark:bg-white dark:w-6 w-6 '/></Link>
+              <Link className='flex justify-between items-center' to='./Cart'><BsCart4  className='dark:text-white w-5 h-5 '/></Link>
               <Darkmode />
             </ul>
 

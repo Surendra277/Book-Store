@@ -11,6 +11,7 @@ import Blog from "../component/Blog";
 import Signin from "../component/Signin";
 import Cart from "../component/Cart";
 import SignUp from "../component/SignUp";
+import Dashboard from "../Admin/Pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />, 
+  },
+  {
+    path: "/Dashboard",
+    element:<Dashboard/>,
   },
 ]);
 
