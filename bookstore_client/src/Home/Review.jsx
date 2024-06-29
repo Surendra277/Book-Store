@@ -52,7 +52,7 @@ const Review = () => {
                     <p className='mb-5'>
                     Fantastic service and speedy delivery! The selection is vast and the prices are unbeatable. My books arrived in perfect condition. Highly recommended for all book lovers.
                         
-                        <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
+                        <Avatar img={propc} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
                         <h5 className='text-lg font-medium'>Sydney Sweeney</h5>
                         <p className='text-base'>American Actress</p>
                     </p>
@@ -92,7 +92,7 @@ const Review = () => {
                     <p className='mb-5'>
                     Wide range of books and excellent customer service. I found several rare titles I've been searching for. Delivery was fast, and the books arrived in pristine condition. Very pleased.
 
-                        <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
+                        <Avatar img={propc} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
                         <h5 className='text-lg font-medium'>Kylie Jenner</h5>
                         <p className='text-base'>American Socialite</p>
                     </p>
@@ -153,7 +153,7 @@ const Review = () => {
                     Excellent experience! The variety of books is amazing, and the ordering process was smooth. Fast delivery and the books arrived in great shape. Will be back for more.
                        
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
-                        <h5 className='text-lg font-medium'>Mark</h5>
+                        <h5 className='text-lg font-medium'>Mark Zu</h5>
                         <p className='text-base'>CEO, Facebook</p>
                     </p>
                 </div>
@@ -170,7 +170,7 @@ const Review = () => {
 
                 <div className='mt-7'>
                     <p className='mb-5'>
-                    Wonderful bookstore with an extensive collection. Easy to use website and outstanding customer service. My books arrived quickly and were well-protected. Could not be more happier with my purchase.
+                    Wonderful bookstore with an extensive collection. Easy to use website and outstanding customer service. My books arrived quickly and were well-protected.
 
                         <Avatar img={propic} alt="avatar of Jese" rounded  className='w-10 mb-4 ' />
                         <h5 className='text-lg font-medium'>Jennifer Lawrence</h5>

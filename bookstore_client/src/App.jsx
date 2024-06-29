@@ -12,10 +12,12 @@ function App() {
       <Navbar />
       <div className='min-h-screen overflow-hidden'>
         <Outlet />
+        
       </div>
+      
       <Footer />
     </>
   )
 }
 
-export default App
+export default App;
