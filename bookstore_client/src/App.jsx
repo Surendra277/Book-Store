@@ -12,9 +12,9 @@ function App() {
       <Navbar />
       <div className='min-h-screen overflow-hidden'>
         <Outlet />
-        
+
       </div>
-      
+
       <Footer />
     </>
   )
