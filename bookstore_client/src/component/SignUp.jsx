@@ -1,18 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
 const SignUp = () => {
 
-  const handleSignUp = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const username = form.un.value;
-
-    const password = form.password.value;
-    console.log(username, email, password);
+  const initialFormState = {
+    username:"",
+    email:"",
+    password:"",
   }
+
+  const[ form,setForm]=useState(
+    initialFormState
+  );
+
+ const handleChange = (ev)=>{
+  const { name, value } = ev.target;
+  setForm({
+    ...form,
+    [name]:value,
+  });
+ };
+
+  const handleUserSubmit = (event) => {
+    event.preventDefault();
+    console.log(form);
+    if(form.username && form.email && form.password){
+      fetch("",{
+        method: "POST",
+        body:JSON.stringify(form),
+        headers:{
+          "Content-Type":"application/json",
+
+        },
+      })
+      .then((res)=>res.json())
+      .then((data) =>{
+        console.log("Response data:", data);
+
+        if(data){
+          console.log("User Data:",data);
+          setForm(initialFormState)
+        }
+        else {
+          alert(data.error || "An Unknown error occured");
+        }
+      })
+      .catch((err)=> console.log(err));
+    }
+   
+  };
 
   return (
     <>
@@ -26,17 +63,17 @@ const SignUp = () => {
                 <h1 className="text-2xl font-semibold flex  justify-center">Sign Up</h1>
               </div>
               <div className="divide-y divide-gray-200">
-                <form onSubmit={handleSignUp} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                <form onSubmit={handleUserSubmit} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                   <div className="relative">
-                    <input name="un" type="text" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="User Name" />
+                    <input name="username" type="text" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="User Name" value={form.username} onChange = {(ev) => handleChange(ev)} />
 
                   </div>
                   <div className="relative">
-                    <input name="email" type="email" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email" />
+                    <input name="email" type="email" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email" value={form.email} onChange = {(ev) => handleChange(ev)}/>
 
                   </div>
                   <div className="relative">
-                    <input name="password" type="password" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
+                    <input name="password" type="password" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" value={form.password} onChange = {(ev) => handleChange(ev)} />
 
                   </div>
                   <div className="relative flex  justify-center">

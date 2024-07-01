@@ -10,9 +10,9 @@ const SiderBar = () => {
   const location = useLocation();
 
   const navItems = [
-    { link: "Dashboard", path: "/dashboard", icon: AiFillHome },
-    { link: "Add Book", path: "/addBook", icon: GiWhiteBook },
-    { link: "All Orders", path: "/allOrders", icon: FaBoxOpen },
+    { link: "Dashboard", path: "/admin/dashboard", icon: AiFillHome },
+    { link: "Add Book", path: "/admin/addBook", icon: GiWhiteBook },
+    { link: "All Orders", path: "/admin/allOrders", icon: FaBoxOpen },
     { link: "LogOut", path: "/logout", icon: RiLogoutBoxRFill },
   ];
 
