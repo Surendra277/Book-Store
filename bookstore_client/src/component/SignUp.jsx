@@ -19,6 +19,7 @@ const SignUp = () => {
   setForm({
     ...form,
     [name]:value,
+    
   });
  };
 

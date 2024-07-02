@@ -17,7 +17,7 @@ const SiderBar = () => {
   ];
 
   return (
-    <div className='w-1/6 sm:w-1/4 bg-slate-500 flex flex-col items-center h-screen'>
+    <div className='w-1/6 sm:w-1/4 bg-slate-500 flex flex-col items-center '>
       {/* Logo */}
       <div className='text-3xl font-bold text-blue-700 h-20 sm:h-28 flex justify-center items-center bg-gray-400 w-full'>
         <div className='flex justify-between items-center gap-2'>
