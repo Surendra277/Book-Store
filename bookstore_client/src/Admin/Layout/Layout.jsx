@@ -1,14 +1,16 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
-import { Sidebar } from 'flowbite-react';
+import SiderBar from './SiderBar';
+
 
 
 const Layout = () => {
   return (
-    <>
-        <Sidebar />
-        <div>
+    <>  <div className='flex'>
+        <SiderBar />
+        <div className='flex w-full'>
             <Outlet />
+        </div>
         </div>
         
     </>
