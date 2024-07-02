@@ -8,7 +8,7 @@ const Layout = () => {
   return (
     <>  <div className='flex'>
         <SiderBar />
-        <div className='flex'>
+        <div className='flex w-full'>
             <Outlet />
         </div>
         </div>
