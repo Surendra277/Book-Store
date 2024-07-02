@@ -3,6 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose';
 import cors from 'cors';
 import routes from './routes/book.routes.js'
+import userRouter from './routes/user.routes.js';
  const app = express();
  dotenv.config();
  app.use(cors());
@@ -18,6 +19,7 @@ catch(error){
 }
 app.use(express.json());
 app.use('/api',routes);
+app.use('/user',userRouter)
 
  app.get('/',(req,res)=>{
     res.send('Hello World')
