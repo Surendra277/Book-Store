@@ -19,12 +19,15 @@ const Shop = () => {
             <img src={book.imageURL} alt="" className='h-96'/>
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
              <p>
-             {book.bookTitle}
+             {book.title}
+             </p>
+             <p>
+             {book.author}
              </p>
             </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
+            <p className=" text-2xl  font-normal text-gray-700 dark:text-gray-400">
               <p>
-              Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+             {book.price}
               </p>
             </p>
             <button className='bg-blue-700 font-semibold text-white py-2 rounded'>Shop Now</button>
