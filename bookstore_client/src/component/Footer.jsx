@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="-m-6 flex flex-wrap">
           <div className="w-full p-6 md:w-1/2 lg:w-5/12">
             <div className="flex h-full flex-col justify-between"><div></div>
-              {/* <div className="mb-4 inline-flex items-center">
+              <div className="mb-4 inline-flex items-center">
                 <svg
                   width="40"
                   height="46"
@@ -21,12 +21,12 @@ const Footer = () => {
                     fill="black"
                   />
                 </svg>
-                <span className="ml-4 text-lg font-bold">DevUI</span>
-              </div> */}
+                <span className="ml-4 text-lg font-bold">Bibliomart</span>
+              </div>
               <div>
-                <p className="mb-4  text-base font-medium">The Tailwind CSS Component library</p>
+                <p className="mb-4  text-base font-medium">An Online Bookstore</p>
                 <p className="text-sm text-gray-600">
-                  &copy; Copyright 2022. All Rights Reserved by DevUI.
+                  &copy; Copyright 2023-2024. Designed and Developed by Team. <br/>All Rights Reserved.
                 </p>
               </div>
             </div>
