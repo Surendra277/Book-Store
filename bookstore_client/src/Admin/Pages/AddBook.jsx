@@ -21,6 +21,7 @@ function AddBookForm() {
 
     console.log({ title, author, genre, description, price, image });
     // Here you can handle form data, for example, send it to an API
+    
     // Clear the form
     setTitle('');
     setAuthor('');

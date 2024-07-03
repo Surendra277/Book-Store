@@ -1,10 +1,48 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-const Signin = () => {
+const Signin = () => { 
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSignIn = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("User logged in successfully", data);
+        // Store token in localStorage or context for future requests
+        localStorage.setItem('token', data.token);
+        if (data.role === 'admin') {
+          navigate('/admin');
+        } else {
+          navigate('/');
+        }
+      } else {
+        console.error("Error logging in:", data);
+        setError(data.error);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      setError("Network error. Please try again later.");
+    }
+
+  };
+
   return (
     <>
-      <div className="min-h-screen bg-teal-100 py-6 flex flex-col  justify-center sm:py-12  ">
+      <div className="min-h-screen bg-teal-100 py-6   flex flex-col  justify-center sm:py-12  ">
         <div className="relative py-3 sm:max-w-xl sm:mx-auto ">
            
           <div className="relative px-4 py-10 bg-white shadow-2xl sm:rounded-3xl sm:p-20 ">
@@ -13,13 +51,14 @@ const Signin = () => {
               <div>
                 <h1 className="text-2xl flex  justify-center font-semibold ">Log In</h1>
               </div>
+              {error && <p className="text-red-500">{error}</p>}
               <div className="divide-y divide-gray-200">
-                <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                <form  onSubmit={handleSignIn} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                   <div className="relative">
-                    <input  name="un" type="text" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email" />
+                    <input  name="email" type="text" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
                   </div>
                   <div className="relative">
-                    <input  id="password" name="password" type="password" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
+                    <input  id="password" name="password" type="password" className="peer  h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password"  onChange={(e) => setPassword(e.target.value)} />
                    
                   </div>
                   <div className="relative flex  justify-center">
@@ -27,8 +66,7 @@ const Signin = () => {
                   </div>
                   <div className="w-full flex justify-center">OR </div>
 
-                </div>
-
+            </form>
               </div>
             </div>
 
@@ -46,7 +84,7 @@ const Signin = () => {
             <hr className='bg-black' />
             <hr className='bg-black' />
             <hr className='bg-black' />
-            <div >
+            <div>
               Don't have an account? 
               <span><Link to="/signup" className='font-bold'> Sign up</Link></span>
             </div>
