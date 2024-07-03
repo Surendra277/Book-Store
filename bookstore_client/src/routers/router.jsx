@@ -11,11 +11,15 @@ import Blog from "../component/Blog";
 import Signin from "../component/Signin";
 import Cart from "../component/Cart";
 import SignUp from "../component/SignUp";
+import Dashboard from "../Admin/Pages/Dashboard";
+import AddBook from "../Admin/Pages/AddBook";
+import AllOrders from "../Admin/Pages/AllOrders";
+import Layout from "../Admin/Layout/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,  
+    element: <App />,
     children: [
       {
         path: "/",
@@ -45,11 +49,29 @@ const router = createBrowserRouter([
   },
   {
     path: "/signin",
-    element: <Signin />, 
+    element: <Signin />,
   },
   {
     path: "/signup",
-    element: <SignUp />, 
+    element: <SignUp />,
+  },
+  {
+    path: "/admin",
+    element: <Layout />,
+    children: [
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "addBook",
+        element: <AddBook />,
+      },
+      {
+        path: "allOrders",
+        element: <AllOrders />,
+      },
+    ],
   },
 ]);
 

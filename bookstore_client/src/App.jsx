@@ -10,11 +10,11 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className='min-h-screen'>
+      <div className='min-h-screen overflow-hidden'>
         <Outlet />
-        
+
       </div>
-      
+
       <Footer />
     </>
   )
