@@ -15,7 +15,7 @@
 }
 
 .hero-section h1 {
-  font-size: 4.8em; 
+  font-size: 5em; 
   margin: 0;
 }
 
@@ -32,24 +32,24 @@
 }
 
 .text {
-  max-width: 1360px;
+  max-width: 950px;
   align-content: center;
   line-height: 1.6;
 }
 
 .text h2 {
-  font-size: 3.3em; 
+  font-size: 3.1em; 
   margin-top: 0;
 }
 
 .text h3 {
-  font-size: 2.4em; 
+  font-size: 2.2em; 
   margin-top: 20px; 
 }
 
 .text p {
-  font-size: 1.5em; 
-  margin: 25px 0;
+  font-size: 1.3em; 
+  margin: 30px 0;
   text-align: justify; 
 }
 
