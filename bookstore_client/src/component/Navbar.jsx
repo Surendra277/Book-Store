@@ -4,6 +4,7 @@ import { FaBarsStaggered,FaBookOpen,FaXmark } from "react-icons/fa6";
 import { BsCart4 } from "react-icons/bs";
 import Darkmode from './Darkmode';
 import logo from '../assets/Logo.png'
+import { IoIosHeartEmpty } from "react-icons/io";
 
 
 const Navbar = () => {
@@ -63,6 +64,7 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link className='flex justify-between items-center' to='./Cart'><BsCart4  className='dark:text-white w-5 h-5 '/></Link>
+              <Link className='flex justify-between items-center' to='./Cart'><IoIosHeartEmpty  className='dark:text-white w-5 h-5 '/></Link>
               <Darkmode />
             </ul>
 

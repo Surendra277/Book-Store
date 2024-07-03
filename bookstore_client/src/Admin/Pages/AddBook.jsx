@@ -10,7 +10,6 @@ function AddBookForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
     const formData = new FormData();
     formData.append('title', title);
     formData.append('author', author);
@@ -19,9 +18,8 @@ function AddBookForm() {
     formData.append('price', price);
     formData.append('image', image);
 
-    console.log({ title, author, genre, description, price, image });
-    // Here you can handle form data, for example, send it to an API
-    // Clear the form
+    // console.log({ title, author, genre, description, price, image });
+  
     setTitle('');
     setAuthor('');
     setGenre('');
@@ -68,14 +66,30 @@ function AddBookForm() {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="genre">
               Genre
             </label>
-            <input
-              type="text"
+            <select
               id="genre"
               value={genre}
               onChange={(e) => setGenre(e.target.value)}
               className="shadow appearance-none border-2 border-gray-300 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
-            />
+            >
+              <option value="">Select a genre</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Romance">Romance</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Horror">Horror</option>
+              <option value="Biography">Biography</option>
+              <option value="History">History</option>
+              <option value="Self-Help">Self-Help</option>
+              <option value="Health & Wellness">Health & Wellness</option>
+              <option value="Business & Economics">Business & Economics</option>
+              <option value="Children's Books">Children's Books</option>
+              <option value="Young Adult">Young Adult</option>
+            </select>
           </div>
           <div className="mb-4 col-span-2">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
