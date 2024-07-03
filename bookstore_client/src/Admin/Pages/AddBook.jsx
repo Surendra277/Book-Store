@@ -34,7 +34,7 @@ function AddBookForm() {
   return (
     <div className="w-full flex items-center justify-left min-h-screen px-4 sm:px-6 lg:px-8 bg-gray-100">
       <form
-        className="w-full max-w-4xl p-8 sm:p-10 lg:p-12 border-2 border-gray-300 rounded-lg shadow-lg bg-white"
+        className="w-full max-w-4xl p-8 sm:p-10 lg:p-4 border-2 border-gray-300 rounded-lg shadow-lg bg-white"
         onSubmit={handleSubmit}
       >
         <h2 className="text-3xl font-bold mb-6 text-left">Add a New Book</h2>
