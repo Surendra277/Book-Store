@@ -1,17 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBarsStaggered,FaBookOpen,FaXmark } from "react-icons/fa6";
+import { FaBarsStaggered, FaBookOpen, FaXmark } from "react-icons/fa6";
 import { BsCart4 } from "react-icons/bs";
 import Darkmode from './Darkmode';
 import logo from '../assets/Logo.png'
 import { IoIosHeartEmpty } from "react-icons/io";
+import Profile from './Profile';
 
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const location = useLocation(); // Get the current location
+  const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    fetch("http://localhost:3000/api/book",
+      {
+        headers: {
+          'token': localStorage.getItem('token'),
+
+        }
+      }
+    ).then(res => res.json()).then(data => setUser(data));
+  }, [])
   // Toggle Menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -38,8 +50,7 @@ const Navbar = () => {
     { link: "About", path: "/about" },
     { link: "Shop", path: "/shop" },
     // { link: "Sell Your Book", path: "/admin/dashboard" },
-    { link: "Blog", path: "/blog" },
-    { link: "Sign in", path: "/signin" },
+    { link: "Blog", path: "/blog" }
   ]
 
   return (
@@ -48,24 +59,29 @@ const Navbar = () => {
         <nav className={`py-4 lg:px-24 px-4 ${isSticky ? "sticky top-0 left-0 right-0 bg-blue-300" : ""}`}>
           <div className='flex justify-between font-serif items-center text-base '>
             <div className=' font-extralight flex justify-between items-center text-base'>
-              <Link to='/' className='text-2xl font-bold text-blue-700 flex items-center gap-2'><FaBookOpen/>BiblioMart</Link>
-             
+              <Link to='/' className='text-2xl font-bold text-blue-700 flex items-center gap-2'><FaBookOpen />BiblioMart</Link>
+
             </div>
 
             {/* nav item for lg devices */}
             <ul className='md:flex space-x-12 hidden'>
-              {navItems.map(({ link, path }) => (
-                <Link
+              {navItems.map(({ link, path, }) => {
+                return <Link
                   key={path}
                   to={path}
                   className={`block text-base text-black uppercase cursor-pointer dark:text-white dark:hover:text-yellow-500 hover:text-blue-700 ${location.pathname === path ? 'font-bold' : ''}`}
                 >
                   {link}
                 </Link>
-              ))}
-              <Link className='flex justify-between items-center' to='./Cart'><BsCart4  className='dark:text-white w-5 h-5 '/></Link>
-              <Link className='flex justify-between items-center' to='./Cart'><IoIosHeartEmpty  className='dark:text-white w-5 h-5 '/></Link>
+              })}
+              <Link className='flex justify-between items-center' to='./Cart'><BsCart4 className='dark:text-white w-14 h-5 ' /></Link>
+              <Link className='flex justify-between items-center' to='./Cart'><IoIosHeartEmpty className='dark:text-white w-5 h-5 ' /></Link>
               <Darkmode />
+              {!user ? <Link to={'/signin'}
+                  className={`block text-base text-black uppercase cursor-pointer dark:text-white dark:hover:text-yellow-500 hover:text-blue-700`}
+                >
+                 Signin
+                </Link> : <Profile user={user} />}
             </ul>
 
             {/* menu btn for mobile devices */}

@@ -6,7 +6,7 @@ function AddBookForm() {
   const [genre, setGenre] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,21 +74,17 @@ function AddBookForm() {
               required
             >
               <option value="">Select a genre</option>
-              <option value="Fiction">Fiction</option>
-              <option value="Non-Fiction">Non-Fiction</option>
-              <option value="Mystery">Mystery</option>
-              <option value="Science Fiction">Science Fiction</option>
+              <option value="Action">Action</option>
+              <option value="Adventure">Adventure</option>
               <option value="Fantasy">Fantasy</option>
-              <option value="Romance">Romance</option>
-              <option value="Thriller">Thriller</option>
+              <option value="Fiction">Fiction</option>
               <option value="Horror">Horror</option>
-              <option value="Biography">Biography</option>
-              <option value="History">History</option>
-              <option value="Self-Help">Self-Help</option>
-              <option value="Health & Wellness">Health & Wellness</option>
-              <option value="Business & Economics">Business & Economics</option>
-              <option value="Children's Books">Children's Books</option>
-              <option value="Young Adult">Young Adult</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Romance">Romance</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Thriller">Thriller</option>
+             
             </select>
           </div>
           <div className="mb-4 col-span-2">
