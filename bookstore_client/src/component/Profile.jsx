@@ -14,7 +14,7 @@ const Profile = ({user}) => {
                 <img className="h-48 w-full object-cover md:h-full md:w-48" src="https://via.placeholder.com/150" alt="Profile" />
               </div>
               <div className="p-8">
-                <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold"></div>
+                <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{}</div>
                 <p className="block mt-1 text-lg leading-tight font-medium text-black">Full Stack Developer</p>
                 <p className="mt-2 text-gray-500">
                   Passionate about building scalable web applications and working with modern web technologies.

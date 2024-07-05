@@ -15,7 +15,7 @@ const Navbar = () => {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/book",
+    fetch("",
       {
         headers: {
           'token': localStorage.getItem('token'),

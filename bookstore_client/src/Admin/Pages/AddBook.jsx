@@ -6,7 +6,7 @@ function AddBookForm() {
   const [genre, setGenre] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [image, setImage] = useState();
+  const [image, setImage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
