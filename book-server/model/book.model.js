@@ -24,7 +24,6 @@ const bookSchema = new mongoose.Schema(
       {
         type: String,
         enum: ["Best Selling","Mystery", "Fiction", "Non-Fiction", "History","Thriller"],
-        required: true,
       },
     ],
     language:{

@@ -25,7 +25,8 @@ const Signin = () => {
         // Store token in localStorage or context for future requests
         localStorage.setItem('token', data.token);
         if (data.role === 'admin') {
-          navigate('/admin');
+          localStorage.setItem("role","admin");
+          navigate('/admin/dashboard');
         } else {
           navigate('/');
         }
@@ -37,7 +38,10 @@ const Signin = () => {
       console.error("Network error:", error);
       setError("Network error. Please try again later.");
     }
-
+    const handleLogout = () => {
+      localStorage.removeItem('token');
+      navigate('/signin');
+    };
   };
 
   return (

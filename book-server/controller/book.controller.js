@@ -1,47 +1,55 @@
+import { json } from "express";
+import upload from "../middleware/uploads.js";
 import Book from "../model/book.model.js";
-import User from "../model/user.model.js";
-
+// import User from "../model/user.model.js";
 const bookController = {
   async storeBook(req, res) {
-    const { id } = req.headers;
-    const user = await User.findById(id);
+    // upload(req, res, async (err) => {
+    //   if (err) {
+    //     return res.status(400).json({ message: err });
+    //   }
+    // const { id } = req.headers;
 
-    if (user.role !== "admin") {
-      return res
-        .status(401)
-        .json({ message: "You are not authorized to perform this action" });
-    }
-    const {
-      title,
-      author,
-      description,
-      price,
-      imageURL,
-      categories,
-      language,
-    } = req.body;
+    // const user = await User.findById(id);
+    //    console.log(user);
+
+    // const role=localStorage.getItem("role");
+
+    // if (role !== "admin")
+    //   {
+    
+    //   return res
+    //     .status(401)
+    //     .json({ message: "You are not authorized to perform this action" });
+    // }
+    // console.log(req.body, "test");
+    // return res.json({ status: 200, data: req.body, file: req.file.filename });
+    const { title, author, description, price, categories, language } =
+      req.body;
+
+    const imageFile = req.file ? `/uploads/${req.file.filename}` : null;
     const newBook = new Book({
       title,
       author,
       description,
       price,
-      imageURL,
       categories,
+      imageURL: imageFile,
       language,
     });
-
     try {
       const savedBook = await newBook.save();
-      res.status(201).json(savedBook);
+      res.status(201).json(savedBook)
     } catch (err) {
+      console.log(err);
       res.status(400).json({ message: err.message });
     }
+    // });
   },
-
 
   async getBookyById(req, res) {
     try {
-      const {id}=req.params;
+      const { id } = req.params;
       const books = await Book.findById(id);
       res.json(books);
     } catch (err) {
