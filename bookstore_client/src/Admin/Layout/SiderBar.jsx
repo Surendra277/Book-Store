@@ -5,13 +5,16 @@ import { AiFillHome } from "react-icons/ai";
 import { GiWhiteBook } from "react-icons/gi";
 import { FaBoxOpen } from "react-icons/fa";
 import { RiLogoutBoxRFill } from "react-icons/ri";
+import { IoMdCloudUpload } from "react-icons/io";
+
 
 const SiderBar = () => {
   const location = useLocation();
 
   const navItems = [
     { link: "Dashboard", path: "/admin/dashboard", icon: AiFillHome },
-    { link: "Add Book", path: "/admin/addBook", icon: GiWhiteBook },
+    { link: "Add Book", path: "/admin/addBook", icon: IoMdCloudUpload },
+    { link: "Manage Book", path: "/managebook", icon:  GiWhiteBook },
     { link: "All Orders", path: "/admin/allOrders", icon: FaBoxOpen },
     { link: "LogOut", path: "/logout", icon: RiLogoutBoxRFill },
   ];

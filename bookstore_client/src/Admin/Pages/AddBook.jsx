@@ -146,6 +146,31 @@ function AddBookForm() {
             />
           </div>
           <div className="mb-4 col-span-2">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="genre">
+              Genre
+            </label>
+            <select
+              id="genre"
+              value={categories}
+              onChange={(e) => setCategories(e.target.value)}
+              className="shadow appearance-none border-2 border-gray-300 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            >
+              <option value="">Select a genre</option>
+              <option value="Action">Action</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Horror">Horror</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Romance">Romance</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Thriller">Thriller</option>
+             
+            </select>
+          </div>
+          {/* <div className="mb-4 col-span-2">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="categories"
@@ -160,7 +185,7 @@ function AddBookForm() {
               className="shadow appearance-none border-2 border-gray-300 rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
-          </div>
+          </div> */}
           <div className="mb-4 col-span-2">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"

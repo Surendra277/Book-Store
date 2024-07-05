@@ -5,6 +5,10 @@ import { File_BASE_URL } from "../config";
 
 const Shop = () => {
   const [books, setBooks] = useState([]);
+  const handleAdd = () =>{
+
+
+  }
 
   useEffect(() => {
     fetch("http://localhost:3000/api/getbook")
@@ -28,7 +32,8 @@ const Shop = () => {
               <p>{book.author}</p>
             </h5>
             <p className=" text-2xl  font-normal text-gray-700 dark:text-gray-400">
-              <p>{book.price}</p>
+              <p>₹{book.price}</p>
+              <button onClick={handleAdd} className='bg-violet-800 hover:bg-violet-950 p-3 my-1 py-0.5 text-white rounded-md mx-4'>Add to Cart</button>
             </p>
             <button className="bg-blue-700 font-semibold text-white py-2 rounded">
               Shop Now

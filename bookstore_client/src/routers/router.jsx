@@ -15,6 +15,7 @@ import Dashboard from "../Admin/Pages/Dashboard";
 import AddBook from "../Admin/Pages/AddBook";
 import AllOrders from "../Admin/Pages/AllOrders";
 import Layout from "../Admin/Layout/Layout";
+import ManageBook from "../Admin/Pages/ManageBook";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "allOrders",
         element: <AllOrders />,
+      },
+      {
+        path: "managebook",
+        element: <ManageBook />,
       },
     ],
   },
