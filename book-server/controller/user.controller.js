@@ -68,9 +68,9 @@ const userController = {
           .status(400)
           .json({ success: false, error: "Invalid credentials" });
       }
-      const authClaims = [{ email: user.email }, { role: user.role }];
+      // const authClaims = [{ email: user.email }, { role: user.role }];
 
-      const token = jwt.sign({ authClaims }, JWT_SECRET, {
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
         expiresIn: "30d",
       });
 
@@ -83,9 +83,11 @@ const userController = {
 
   async getUser(req, res) {
     try {
-      const { id } = req.headers;
-      const user = await User.findById(id).select("-password");
-      return res.status(200).json(user);
+      const  id  = req._id;
+      // return res.json({ status: 200, user: req._id });
+      const user = await User.findById(id);
+      console.log(user, id, "user");
+      return res.json({ status: 200, user });
     } catch (error) {
       res.status(500).json({ message: "Internal server error" });
     }
