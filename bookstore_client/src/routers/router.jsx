@@ -8,6 +8,7 @@ import About from "../component/About";
 import Shop from "../Shop/Shop";
 import SingleBook from "../Shop/SingleBook";
 import Blog from "../component/Blog";
+import Favourites from "../component/Favourites";
 import Signin from "../component/Signin";
 import Cart from "../component/Cart";
 import SignUp from "../component/SignUp";
@@ -19,6 +20,9 @@ import ManageBook from "../Admin/Pages/ManageBook";
 import UserProfile from "../component/ProfilePage/UserProfile";
 import Wishlist from "../component/ProfilePage/Wishlist";
 import Order from "../component/ProfilePage/Order";
+import Licensing from "../component/FooterPages/Licensing";
+import PrivacyPolicy from "../component/FooterPages/PrivacyPolicy";
+import Terms from "../component/FooterPages/Terms";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +46,10 @@ const router = createBrowserRouter([
         element: <Blog />,
       },
       {
+        path: "/favourites",
+        element: <Favourites />,
+      },
+      {
         path: "/cart",
         element: <Cart />,
       },
@@ -60,6 +68,18 @@ const router = createBrowserRouter([
       {
         path: "/order",
         element: <Order/>,
+      },
+      {
+        path: "/licensing",
+        element: <Licensing />,
+      },
+      {
+        path: "/privacypolicy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/terms",
+        element: <Terms/>,
       },
     ],
   },
