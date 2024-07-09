@@ -25,7 +25,7 @@ const Signin = () => {
         // Store token in localStorage or context for future requests
         localStorage.setItem('token', data.token);
         if (data.role === 'admin') {
-          localStorage.setItem("role","admin");
+          localStorage.setItem("role","admin")
           navigate('/admin/dashboard');
         } else {
           navigate('/');
