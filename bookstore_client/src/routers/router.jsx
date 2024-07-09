@@ -16,6 +16,9 @@ import AddBook from "../Admin/Pages/AddBook";
 import AllOrders from "../Admin/Pages/AllOrders";
 import Layout from "../Admin/Layout/Layout";
 import ManageBook from "../Admin/Pages/ManageBook";
+import UserProfile from "../component/ProfilePage/UserProfile";
+import Wishlist from "../component/ProfilePage/Wishlist";
+import Order from "../component/ProfilePage/Order";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,18 @@ const router = createBrowserRouter([
       {
         path: "/book/:id",
         element: <SingleBook />,
+      },
+      {
+        path: "/userprofile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
+      },
+      {
+        path: "/order",
+        element: <Order/>,
       },
     ],
   },

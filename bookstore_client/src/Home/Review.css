@@ -1,0 +1,27 @@
+/* Review.css */
+
+.review-slide {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .review-slide:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .review-slide .text-amber-500 {
+    animation: bounce 1s infinite;
+  }
+  
+  
+  
+  .mySwiper .swiper-pagination-bullet {
+    background: #8b5cf6;
+    opacity: 0.7;
+  }
+  
+  .mySwiper .swiper-pagination-bullet-active {
+    background: #d946ef;
+    opacity: 1;
+  }
+  
