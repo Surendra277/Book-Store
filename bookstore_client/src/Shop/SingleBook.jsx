@@ -6,4 +6,4 @@ const SingleBook = () => {
   )
 }
 
-export default SingleBook
+export default SingleBook;
