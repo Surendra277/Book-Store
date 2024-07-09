@@ -16,6 +16,10 @@ import Dashboard from "../Admin/Pages/Dashboard";
 import AddBook from "../Admin/Pages/AddBook";
 import AllOrders from "../Admin/Pages/AllOrders";
 import Layout from "../Admin/Layout/Layout";
+import ManageBook from "../Admin/Pages/ManageBook";
+import UserProfile from "../component/ProfilePage/UserProfile";
+import Wishlist from "../component/ProfilePage/Wishlist";
+import Order from "../component/ProfilePage/Order";
 import Licensing from "../component/FooterPages/Licensing";
 import PrivacyPolicy from "../component/FooterPages/PrivacyPolicy";
 import Terms from "../component/FooterPages/Terms";
@@ -54,6 +58,18 @@ const router = createBrowserRouter([
         element: <SingleBook />,
       },
       {
+        path: "/userprofile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
+      },
+      {
+        path: "/order",
+        element: <Order/>,
+      },
+      {
         path: "/licensing",
         element: <Licensing />,
       },
@@ -77,7 +93,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Layout />,
+    element: <Layout/>,
     children: [
       {
         path: "dashboard",
@@ -90,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: "allOrders",
         element: <AllOrders />,
+      },
+      {
+        path: "managebook",
+        element: <ManageBook />,
       },
     ],
   },
