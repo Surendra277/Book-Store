@@ -1,7 +1,8 @@
-import  { useState, useEffect } from 'react';
-import darkmode from '../assets/darkbutton.png';
-import lightmode from '../assets/lightbutton.png';
-
+import { useState, useEffect } from 'react';
+// import darkmode from '../assets/darkbutton.png';
+// import lightmode from '../assets/lightbutton.png';
+import { FiSun } from "react-icons/fi";
+import { FaRegMoon } from "react-icons/fa6";
 function Darkmode() {
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -23,7 +24,7 @@ function Darkmode() {
 
     return (
         <div className="relative">
-            <img
+            {/* <img
                 onClick={toggleTheme}
                 src={lightmode}
                 alt="lightmode"
@@ -34,7 +35,9 @@ function Darkmode() {
                 src={darkmode}
                 alt="darkmode"
                 className={`w-12 cursor-pointer ${theme === "dark" ? "opacity-100" : "opacity-0"} transition-all duration-300`}
-            />
+            /> */}
+            <FiSun onClick={toggleTheme} className={`cursor-pointer  ${theme === "dark" ? "opacity-100" : "opacity-0"} transition-all duration-300`}/>
+            <FaRegMoon  onClick={toggleTheme} className={` cursor-pointer top-0 absolute  z-10 ${theme === "dark" ? "opacity-0" : "opacity-100"} transition-all duration-300`}/>
         </div>
     );
 }

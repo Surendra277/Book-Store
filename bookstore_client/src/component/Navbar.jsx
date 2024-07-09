@@ -6,6 +6,7 @@ import Darkmode from "./Darkmode";
 import logo from "../assets/Logo.png";
 import { IoIosHeartEmpty } from "react-icons/io";
 import Profile from "./Profile";
+import UserProfile from "./ProfilePage/UserProfile";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +60,7 @@ const Navbar = () => {
     <>
       <header className="w-full bg-transparent fixed top-0 right-0 left-0 dark:bg-black dark:text-white-700 transition-all ease-in duration-300">
         <nav
-          className={`py-4 lg:px-24 px-4 ${
+          className={`py-2 lg:px-24 px-4 ${
             isSticky ? "sticky top-0 left-0 right-0 bg-blue-300" : ""
           }`}
         >
@@ -75,7 +76,7 @@ const Navbar = () => {
             </div>
 
             {/* nav item for lg devices */}
-            <ul className="md:flex space-x-12 hidden">
+            <ul className="md:flex space-x-12 hidden flex justify-center items-center">
               {navItems.map(({ link, path }) => {
                 return (
                   <Link
@@ -92,12 +93,12 @@ const Navbar = () => {
               <Link className="flex justify-between items-center" to="./Cart">
                 <BsCart4 className="dark:text-white w-14 h-5 " />
               </Link>
-              <Link className="flex justify-between items-center" to="./Cart">
+              {/* <Link className="flex justify-between items-center" to="./Cart">
                 <IoIosHeartEmpty className="dark:text-white w-5 h-5 " />
               </Link>
-              <Darkmode />
+             */}
               {user?.fullName ? (
-                <Profile user={user} />
+                <Profile user={user}/>
               ) : (
                 <Link
                   to={"/signin"}

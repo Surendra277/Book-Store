@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../assets/Logo.png';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillHome } from "react-icons/ai";
 import { GiWhiteBook } from "react-icons/gi";
 import { FaBoxOpen } from "react-icons/fa";
@@ -10,13 +10,21 @@ import { IoMdCloudUpload } from "react-icons/io";
 
 const SiderBar = () => {
   const location = useLocation();
+  const navigate =useNavigate();  
 
+  const handleLogout = () => {
+    // Clear authentication tokens or user data
+    localStorage.removeItem('token');
+    navigate('/signin')
+    
+  }
+   
   const navItems = [
     { link: "Dashboard", path: "/admin/dashboard", icon: AiFillHome },
     { link: "Add Book", path: "/admin/addBook", icon: IoMdCloudUpload },
     { link: "Manage Book", path: "/managebook", icon:  GiWhiteBook },
     { link: "All Orders", path: "/admin/allOrders", icon: FaBoxOpen },
-    { link: "LogOut", path: "/logout", icon: RiLogoutBoxRFill },
+    // { link: "LogOut", path: "/logout", icon: RiLogoutBoxRFill },
   ];
 
   return (
@@ -41,6 +49,8 @@ const SiderBar = () => {
             {item.link}
           </Link>
         ))}
+        <button onClick={handleLogout}>LogOut</button>
+
       </ul>
     </div>
   );

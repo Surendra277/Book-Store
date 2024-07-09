@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/Logo.png'
+import logo from '../assets/biblio.png'
 
 const Footer = () => {
   return (
@@ -12,7 +12,7 @@ const Footer = () => {
               <div className="flex h-full flex-col justify-between">
                 <div><img src={logo} className='h-24' alt="BilblioMart" /></div>
                 <div>
-                  <p className="mb-4 text-base font-medium">An Online Bookstore</p>
+                  <p className="mb-4 text-base font-serif font-bold">An Online Bookstore</p>
                   <p className="text-sm text-gray-600">
                     &copy; Copyright 2023-2024. Designed and Developed by Team. <br />
                     All Rights Reserved.
