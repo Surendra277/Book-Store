@@ -38,10 +38,10 @@ const Signin = () => {
       console.error("Network error:", error);
       setError("Network error. Please try again later.");
     }
-    const handleLogout = () => {
-      localStorage.removeItem('token');
-      navigate('/signin');
-    };
+  //   const handleLogout = () => {
+  //     localStorage.removeItem('token');
+  //     navigate('/signin');
+  //   };
   };
 
   return (
@@ -99,4 +99,4 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default Signin;

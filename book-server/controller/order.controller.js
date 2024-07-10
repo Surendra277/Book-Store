@@ -1,6 +1,6 @@
 import Order from "../model/order.model";
 
-const orderController={
+ const orderController={
      async createOrder(req, res) {
         const { userId, bookId } = req.body;
 
@@ -24,4 +24,4 @@ const orderController={
     }
   }
 }
-
+export default orderController;

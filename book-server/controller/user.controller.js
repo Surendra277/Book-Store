@@ -86,7 +86,7 @@ const userController = {
       const  id  = req._id;
       // return res.json({ status: 200, user: req._id });
       const user = await User.findById(id);
-      console.log(user, id, "user");
+      // console.log(user, id, "user");
       return res.json({ status: 200, user });
     } catch (error) {
       res.status(500).json({ message: "Internal server error" });

@@ -13,9 +13,9 @@ const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const navigate = useNavigate();
 
-  const handleAdd = (book) => {
-    console.log(`Added ${book.title} to cart.`);
-  };
+  // const handleAdd = (book) => {
+  //   console.log(`Added ${book.title} to cart.`);
+  // };
 
   useEffect(() => {
     fetch("http://localhost:3000/api/getbook")
