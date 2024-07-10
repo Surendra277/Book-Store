@@ -1,28 +1,30 @@
 import React, { useState } from "react";
 
 const Cart = () => {
-  const initialCartItems = [
-    {
-      title: "The Great Gatsby",
-      author: "F. Scott Fitzgerald",
-      price: 499,
-      image: "https://example.com/great-gatsby.jpg",
-    },
-    {
-      title: "1984",
-      author: "George Orwell",
-      price: 349,
-      image: "https://example.com/1984.jpg",
-    },
-    {
-      title: "To Kill a Mockingbird",
-      author: "Harper Lee",
-      price: 399,
-      image: "https://example.com/to-kill-a-mockingbird.jpg",
-    },
-  ];
+  // const initialCartItems = [
+  //   {
+  //     title: "The Great Gatsby",
+  //     author: "F. Scott Fitzgerald",
+  //     price: 499,
+  //     image: "https://example.com/great-gatsby.jpg",
+  //   },
+  //   {
+  //     title: "1984",
+  //     author: "George Orwell",
+  //     price: 349,
+  //     image: "https://example.com/1984.jpg",
+  //   },
+  //   {
+  //     title: "To Kill a Mockingbird",
+  //     author: "Harper Lee",
+  //     price: 399,
+  //     image: "https://example.com/to-kill-a-mockingbird.jpg",
+  //   },
+  // ];
 
   const [cartItems, setCartItems] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+
 
   const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
 
@@ -32,12 +34,12 @@ const Cart = () => {
 
   const handleAddToFavorites = (item) => {
     // Logic to add item to favorites
+    setFavorites([...favorites, item]);
+    console.log("Added to favorites:", item);
+
   };
 
-  const handleAddToCart = () => {
-    setCartItems(initialCartItems);
-  };
-
+ 
   return (
     <div className="mx-auto flex max-w-4xl flex-col space-y-8 p-6 sm:p-12 bg-white shadow-md rounded-lg">
       <h2 className="text-4xl font-bold text-gray-800">Your Cart</h2>
@@ -48,7 +50,7 @@ const Cart = () => {
           </p>
           <button
             type="button"
-            onClick={handleAddToCart}
+    
             className="rounded-md bg-black px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
           >
             Shop Now
@@ -73,7 +75,7 @@ const Cart = () => {
                     alt={item.title}
                   />
                   <div className="flex w-full flex-col justify-between">
-                    <div className="flex w-full justify-between pb-4">
+                    <div className="flex w-full justify-between pb-   4">
                       <div className="space-y-2">
                         <h3 className="text-xl font-semibold text-gray-800">
                           {item.title}

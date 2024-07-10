@@ -90,6 +90,7 @@ const Navbar = () => {
                   </Link>
                 );
               })}
+              
               <Link className="flex justify-between items-center" to="./Cart">
                 <BsCart4 className="dark:text-white w-14 h-5 " />
               </Link>
