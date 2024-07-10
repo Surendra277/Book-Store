@@ -6,14 +6,14 @@ import upload from "../middleware/uploads.js";
 
 const router = express.Router();
 
-router.get("/getbook", authenticateToken,bookController.getBook);
-router.post("/book", upload,authenticateToken,bookController.storeBook);
+router.get("/getbook",bookController.getBook);
+router.post("/book", upload,bookController.storeBook);
 router.put("/updatebook", authenticateToken, bookController.updateBook);
 router.delete("/book", authenticateToken, bookController.deleteBook);
 router.get("/bookbyid/:id", bookController.getBookyById);
 router.put("/storefavbooks", authenticateToken, favbooksController.storeFavBooks);
 router.put("/removefavbooks", authenticateToken, favbooksController.removeFavBooks);
-router.get("/getfavbooks", authenticateToken, favbooksController.getFavBooks);
+// router.get("/getfavbooks", authenticateToken, favbooksController.getFavBooks);
 // router.post('/bestbook',favbooksController.storeFavBooks)
 // router.get('/bestbook',favbooksController.getFavBooks)
 
