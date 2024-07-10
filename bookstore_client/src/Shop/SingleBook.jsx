@@ -5,7 +5,7 @@ import { File_BASE_URL } from "../config";
 
 const SingleBook = () => {
   const { id } = useParams();
-  const [book, setBook] = useState(null);
+  const [book, setBook] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/getbook/${id}`)
@@ -31,7 +31,7 @@ const SingleBook = () => {
           <p className="text-xl mb-2"><span className="font-bold">Price:</span> ₹{book.price}</p>
           <p className="text-md mt-4">{book.description}</p>
           <button className="bg-blue-700 text-white py-2 px-4 rounded mt-4">Add to Cart</button>
-          console.log("hii")
+          
         </div>
       </div>
     </div>
