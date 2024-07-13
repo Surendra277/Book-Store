@@ -23,6 +23,8 @@ import Order from "../component/ProfilePage/Order";
 import Licensing from "../component/FooterPages/Licensing";
 import PrivacyPolicy from "../component/FooterPages/PrivacyPolicy";
 import Terms from "../component/FooterPages/Terms";
+import FavBook from "../Home/FavBook";
+import FavoriteBooks from "../Home/FavoriteBooks";
 
 const router = createBrowserRouter([
   {
@@ -42,12 +44,16 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/blog",
-        element: <Blog />,
+        path: "/favoritebooks",
+        element: <FavoriteBooks />,
       },
       {
         path: "/favourites",
         element: <Favourites/>,
+      },
+      {
+        path: "/favbook",
+        element: <FavBook />,
       },
       {
         path: "/cart",
