@@ -1,48 +1,131 @@
-import React, { useState } from "react";
+import React, {  useState,useEffect} from "react";
 
 const Cart = () => {
-  // const initialCartItems = [
-  //   {
-  //     title: "The Great Gatsby",
-  //     author: "F. Scott Fitzgerald",
-  //     price: 499,
-  //     image: "https://example.com/great-gatsby.jpg",
-  //   },
-  //   {
-  //     title: "1984",
-  //     author: "George Orwell",
-  //     price: 349,
-  //     image: "https://example.com/1984.jpg",
-  //   },
-  //   {
-  //     title: "To Kill a Mockingbird",
-  //     author: "Harper Lee",
-  //     price: 399,
-  //     image: "https://example.com/to-kill-a-mockingbird.jpg",
-  //   },
-  // ];
-
   const [cartItems, setCartItems] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/getcartbook", {
+
+          method:"GET",
+          headers: {
+          
+            id:localStorage.getItem("id"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            // "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch cart items");
+        }
+
+        const data = await response.json();
+        setCartItems(data);
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+        setError("Error fetching cart items. Please try again later.");
+      }
+    };
+
+    fetchCartItems();
+  }, []);
+
+  const handleRemove = async (index) => {
+    const itemId = cartItems[index]._id; // Assuming each item has an `_id` field
+    try {
+      const response = await fetch(`http://localhost:3000/api/removefromcart/${itemId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to remove item from cart");
+      }
+
+      // Remove the item from the cartItems state
+      setCartItems(cartItems.filter((_, i) => i !== index));
+    } catch (error) {
+      console.error("Error removing item from cart:", error);
+      setError("Error removing item from cart. Please try again later.");
+    }
+  };
 
   const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
 
-  const handleRemove = (index) => {
-    setCartItems(cartItems.filter((_, i) => i !== index));
-  };
+// import React, {  useState } from "react";
 
-  const handleAddToFavorites = (item) => {
-    // Logic to add item to favorites
-    setFavorites([...favorites, item]);
-    console.log("Added to favorites:", item);
+// const Cart = () => {
+  
+ 
 
-  };
+//   const [cartItems, setCartItems] = useState([]);
+  
+//   useEffect(() => {
+//     const fetchCartItems = async () => {
+//       try {
+//         const response = await fetch("http://localhost:3000/api/getcartitems", {
+//           headers: 'GET',
+//             "Content-Type": "application/json",
+//             Authorization: "Bearer " + localStorage.getItem("token"),
+//           },
+//         });
+      
+//         if (!response.ok) {
+//           throw new Error("Failed to fetch cart items");
+//         }
+
+//         const data = await response.json();
+//         setCartItems(data);
+//       } catch (error) {
+//         console.error("Error fetching cart items:", error);
+//         setError("Error fetching cart items. Please try again later.");
+//       }
+
+  
+//     fetchCartItems();
+//    []);
+
+
+//   const handleRemove = async (index) => {
+//     const itemId = cartItems[index]._id; // Assuming each item has an `_id` field
+//     try {
+//       const response = await fetch(`http://localhost:3000/api/removefromcart/${itemId}`, {
+//         method: "DELETE",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: "Bearer " + localStorage.getItem("token"),
+//         },
+//       });
+
+//       if (!response.ok) {
+//         throw new Error("Failed to remove item from cart");
+//       }
+
+//       // Remove the item from the cartItems state
+//       setCartItems(cartItems.filter((_, i) => i !== index));
+//     } catch (error) {
+//       console.error("Error removing item from cart:", error);
+//       setError("Error removing item from cart. Please try again later.");
+//     }
+//   }; 
+
+
+
+
+  // const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
+
 
  
   return (
     <div className="mx-auto flex max-w-4xl flex-col space-y-8 p-6 sm:p-12 bg-white shadow-md rounded-lg">
       <h2 className="text-4xl font-bold text-gray-800">Your Cart</h2>
+      {error && <p className="text-red-500">{error}</p>}
       {cartItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-12">
           <p className="text-lg font-medium text-gray-600 mb-4">
@@ -112,7 +195,7 @@ const Cart = () => {
                         </svg>
                         <span>Remove</span>
                       </button>
-                      <button
+                      {/* <button
                         type="button"
                         onClick={() => handleAddToFavorites(item)}
                         className="flex items-center space-x-2 px-3 py-2 text-blue-600 hover:text-blue-800"
@@ -132,7 +215,7 @@ const Cart = () => {
                           <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path>
                         </svg>
                         <span>Add to favorites</span>
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>

@@ -13,6 +13,7 @@ const authenticateToken = (req, res, next) => {
       return res.Status(403).json("token expired");
     }
     req._id = user._id;
+    // req.user = user
     next();
   });
 };
