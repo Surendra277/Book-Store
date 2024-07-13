@@ -7,7 +7,6 @@ import Home from "../Home/Home";
 import About from "../component/About";
 import Shop from "../Shop/Shop";
 import SingleBook from "../Shop/SingleBook";
-import Blog from "../component/Blog";
 import Favourites from "../component/Favourites";
 import Signin from "../component/Signin";
 import Cart from "../component/Cart";
