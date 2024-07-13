@@ -35,25 +35,25 @@ const SingleBook = () => {
     }
   };
 
-  const handleAddToCart = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/api/cart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(book),
-      });
+  // const handleAddToCart = async () => {
+  //   try {
+  //     const response = await fetch('http://localhost:3000/api/cart', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(book),
+  //     });
 
-      if (response.ok) {
-        setIsAddedToCart(true);
-      } else {
-        console.error('Failed to add to cart');
-      }
-    } catch (error) {
-      console.error('Error adding to cart:', error);
-    }
-  };
+  //     if (response.ok) {
+  //       setIsAddedToCart(true);
+  //     } else {
+  //       console.error('Failed to add to cart');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error adding to cart:', error);
+  //   }
+  // };
 
   if (error) {
     return <div>{error}</div>;

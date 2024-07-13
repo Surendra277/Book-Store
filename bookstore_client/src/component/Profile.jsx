@@ -33,7 +33,7 @@ const navigate =useNavigate();
 
               <Link to="/userprofile" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaUser className='mx-3' /> Profile</Link>
               <Link to="/order" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaBoxOpen className='mx-3' /> Orders</Link>
-              <Link to="/wishlist" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaHeart className='mx-3' /> wishlist</Link>
+              <Link to="/favorites" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaHeart className='mx-3' /> favorites</Link>
             <p className='block flex py-2 text-lg leading-tight font-medium text-black mx-3'><Darkmode /></p>
             
 
