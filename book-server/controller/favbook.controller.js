@@ -32,19 +32,18 @@ const favbooksController = {
     }
   },
 
-//   async getFavBooks(req,res){
-//     try {
-//         const { id } = req.headers;
-//         const userData = await User.findById(id).populate("favourites"); 
-//         const favoriteBook =userData.favourites;
-//         console.log(favoriteBook);
-//         return res.status(200).json({ favoriteBook });
+  async getFavBooks(req,res){
+    try {
+        const { id } = req.headers;
+        const userData = await User.findById(id).populate("favourites"); 
+        const favorites =userData.favourites;
+        return res.status(200).json({ favorites });
 
-//   }
-//   catch (error) {
-//     res.status(404).json({ message: error.message });
-//   }
-// }
+  }
+  catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
 }
 export default favbooksController;
      

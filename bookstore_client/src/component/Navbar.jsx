@@ -17,7 +17,6 @@ const Navbar = () => {
   useEffect(() => {
     fetch(
       "http://localhost:3000/user/getUser",
-
       {
         method: "GET",
         headers: {
@@ -26,7 +25,10 @@ const Navbar = () => {
       }
     )
       .then((res) => res.json())
-      .then((data) => setUser(data.user));
+      .then((data) => {
+      
+        setUser(data.user);
+      });
   }, []);
   // Toggle Menu
   const toggleMenu = () => {
@@ -53,8 +55,7 @@ const Navbar = () => {
     { link: "About", path: "/about" },
     { link: "Shop", path: "/shop" },
     // { link: "Favourites", path: "/favourites" },
-    
-  ]
+  ];
 
   return (
     <>
@@ -90,7 +91,7 @@ const Navbar = () => {
                   </Link>
                 );
               })}
-              
+
               <Link className="flex justify-between items-center" to="./Cart">
                 <BsCart4 className="dark:text-white w-14 h-5 " />
               </Link>
@@ -99,7 +100,7 @@ const Navbar = () => {
               </Link>
              */}
               {user?.fullName ? (
-                <Profile user={user}/>
+                <Profile user={user} />
               ) : (
                 <Link
                   to={"/signin"}

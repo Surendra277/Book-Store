@@ -39,6 +39,7 @@ const Cart = () => {
   return (
     <div className="mx-auto my-24 flex max-w-4xl flex-col space-y-8 p-6 sm:p-12 bg-white shadow-2xl rounded-lg">
       <h2 className="text-4xl font-bold text-gray-800">Your Cart</h2>
+      {error && <p className="text-red-500">{error}</p>}
       {cartItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-12">
           <p className="text-lg font-medium text-gray-600 mb-4">
