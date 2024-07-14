@@ -22,7 +22,7 @@ const Shop = () => {
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
-
+  
   const filteredBooks = selectedCategory === 'All'
     ? books
     : books.filter(book => book.categories.includes(selectedCategory));

@@ -14,6 +14,9 @@ const SingleBook = () => {
       .then((data) => setBook(data));
   }, [id]);
 
+  
+ localStorage.setItem('bookid',id)
+ console.log(id);
   if (error) {
     return <div>{error}</div>;
   }
@@ -60,6 +63,7 @@ const SingleBook = () => {
         },
         
  })
+ 
  const data = await response.json();
       if (response.ok) {
         alert(data.message);

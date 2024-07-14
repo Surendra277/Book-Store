@@ -1,5 +1,5 @@
 import React, {  useState,useEffect} from "react";
-
+import { File_BASE_URL } from "../config";
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
@@ -23,7 +23,9 @@ const Cart = () => {
         }
 
         const data = await response.json();
-        setCartItems(data);
+        setCartItems(data.cart);
+        console.log(data.cart);
+  
       } catch (error) {
         console.error("Error fetching cart items:", error);
         setError("Error fetching cart items. Please try again later.");
@@ -33,95 +35,9 @@ const Cart = () => {
     fetchCartItems();
   }, []);
 
-  const handleRemove = async (index) => {
-    const itemId = cartItems[index]._id; // Assuming each item has an `_id` field
-    try {
-      const response = await fetch(`http://localhost:3000/api/removefromcart/${itemId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to remove item from cart");
-      }
-
-      // Remove the item from the cartItems state
-      setCartItems(cartItems.filter((_, i) => i !== index));
-    } catch (error) {
-      console.error("Error removing item from cart:", error);
-      setError("Error removing item from cart. Please try again later.");
-    }
-  };
-
+ 
   const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
 
-// import React, {  useState } from "react";
-
-// const Cart = () => {
-  
- 
-
-//   const [cartItems, setCartItems] = useState([]);
-  
-//   useEffect(() => {
-//     const fetchCartItems = async () => {
-//       try {
-//         const response = await fetch("http://localhost:3000/api/getcartitems", {
-//           headers: 'GET',
-//             "Content-Type": "application/json",
-//             Authorization: "Bearer " + localStorage.getItem("token"),
-//           },
-//         });
-      
-//         if (!response.ok) {
-//           throw new Error("Failed to fetch cart items");
-//         }
-
-//         const data = await response.json();
-//         setCartItems(data);
-//       } catch (error) {
-//         console.error("Error fetching cart items:", error);
-//         setError("Error fetching cart items. Please try again later.");
-//       }
-
-  
-//     fetchCartItems();
-//    []);
-
-
-//   const handleRemove = async (index) => {
-//     const itemId = cartItems[index]._id; // Assuming each item has an `_id` field
-//     try {
-//       const response = await fetch(`http://localhost:3000/api/removefromcart/${itemId}`, {
-//         method: "DELETE",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: "Bearer " + localStorage.getItem("token"),
-//         },
-//       });
-
-//       if (!response.ok) {
-//         throw new Error("Failed to remove item from cart");
-//       }
-
-//       // Remove the item from the cartItems state
-//       setCartItems(cartItems.filter((_, i) => i !== index));
-//     } catch (error) {
-//       console.error("Error removing item from cart:", error);
-//       setError("Error removing item from cart. Please try again later.");
-//     }
-//   }; 
-
-
-
-
-  // const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
-
-
- 
   return (
     <div className="mx-auto flex max-w-4xl flex-col space-y-8 p-6 sm:p-12 bg-white shadow-md rounded-lg">
       <h2 className="text-4xl font-bold text-gray-800">Your Cart</h2>
@@ -154,7 +70,7 @@ const Cart = () => {
                 <div className="flex w-full space-x-6">
                   <img
                     className="h-28 w-28 flex-shrink-0 rounded-md object-contain sm:h-36 sm:w-36"
-                    src={item.image}
+                    src={`${File_BASE_URL}${item.imageURL}`}
                     alt={item.title}
                   />
                   <div className="flex w-full flex-col justify-between">
@@ -174,7 +90,6 @@ const Cart = () => {
                     <div className="flex space-x-4 text-sm">
                       <button
                         type="button"
-                        onClick={() => handleRemove(index)}
                         className="flex items-center space-x-2 px-3 py-2 text-red-600 hover:text-red-800"
                       >
                         <svg

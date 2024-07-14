@@ -21,9 +21,9 @@ const Favourites = () => {
           throw new Error("Failed to fetch favourites");
         }
         const data = await response.json();
-        
+        // localStorage.setItem('id',data.id)
         setFavourites(data.favorites);
-        console.log(data);
+       
 
       } catch (error) {
         setError(error.message);
@@ -35,6 +35,32 @@ const Favourites = () => {
     fetchFavourites();
   }, []);
 
+  const removeFromFavourites = async (bookId) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/removefavbooks", {
+        method: "PUT",
+        headers: {
+          id: localStorage.getItem("id"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          bookid: bookId
+        },
+            //  body: JSON.stringify({ bookId }),     
+      });
+      
+      if (!response.ok) {
+        throw new Error("Failed to remove book from favourites");
+      }
+      const data = await response.json();
+      alert(data.message);
+      // Update state to remove the book
+      setFavourites((prevFavourites) =>
+        prevFavourites.filter((book) => book._id !== bookId)
+      );
+    } catch (error) {
+      setError(error.message);
+    }
+
+  }
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -59,9 +85,9 @@ const Favourites = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-          {favourites.map((book, index) => (
+          {favourites.map((book) => (
             <div
-              key={index}
+              key={book._id}
               className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
             >
               <img
@@ -74,7 +100,7 @@ const Favourites = () => {
               </h3>
               <p className="text-gray-600 mb-4">by {book.author}</p>
               <p className="text-lg font-semibold text-gray-800">₹{book.price}</p>
-              <button
+              <button    onClick={() => removeFromFavourites(book._id)}
                 type="button"
                 className="mt-4 rounded-md bg-emerald-500 px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
               >
