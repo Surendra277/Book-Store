@@ -19,7 +19,7 @@ const cartController ={
     },
     async removeFromCart(req,res){
         try {
-            const { bookid} = req.params;
+            const {bookid} = req.params;
             const{id}=req.headers;
             await User.findByIdAndUpdate(id, { $pull: { cart: bookid } });
             return res.status(200).json({ message: "Book removed from cart" });

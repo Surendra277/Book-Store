@@ -19,7 +19,7 @@ const navigate =useNavigate();
   }
   
   return (
-    <div className='m-5'>
+    <div className=''>
       <Popover
         content={
           <div className="max-w-sm mx-auto  bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl  w-80  h-96 border border-black">
@@ -33,8 +33,8 @@ const navigate =useNavigate();
 
               <Link to="/userprofile" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaUser className='mx-3' /> Profile</Link>
               <Link to="/order" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaBoxOpen className='mx-3' /> Orders</Link>
-              <Link to="/favourites" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaHeart className='mx-3' />Favourites</Link>
-            <p className='block flex py-2 text-lg leading-tight font-medium text-black mx-3'><Darkmode /> <span className='px-3'>Darkmode</span></p>
+              <Link to="/favorites" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaHeart className='mx-3' /> Favorites</Link>
+            <p className='block flex py-2 text-lg leading-tight font-medium text-black mx-3'><Darkmode /></p>
             
 
               {/* <Link to="/userprofile" className="block flex  mt-1 text-lg leading-tight font-medium text-black"> <IoLogOut  className='mx-3 h-5 w-5' /> Logout</Link> */}

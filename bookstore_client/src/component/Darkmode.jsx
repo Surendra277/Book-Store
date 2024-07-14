@@ -20,10 +20,11 @@ function Darkmode() {
 
     const toggleTheme = () => {
         setTheme(theme === "dark" ? "light" : "dark");
+        localStorage.setItem("theme", theme === "dark" ? "light" : "dark")
     };
 
     return (
-        <div className="relative">
+        <button onClick={toggleTheme} className="relative flex gap-2">
             {/* <img
                 onClick={toggleTheme}
                 src={lightmode}
@@ -36,9 +37,10 @@ function Darkmode() {
                 alt="darkmode"
                 className={`w-12 cursor-pointer ${theme === "dark" ? "opacity-100" : "opacity-0"} transition-all duration-300`}
             /> */}
-            <FiSun onClick={toggleTheme} className={`cursor-pointer  ${theme === "dark" ? "opacity-100" : "opacity-0"} transition-all duration-300`}/>
-            <FaRegMoon  onClick={toggleTheme} className={` cursor-pointer top-0 absolute  z-10 ${theme === "dark" ? "opacity-0" : "opacity-100"} transition-all duration-300`}/>
-        </div>
+            <FiSun  className={`cursor-pointer  ${theme === "dark" ? "opacity-100" : "opacity-0"} transition-all duration-300`}/>
+            <FaRegMoon className={` cursor-pointer top-0 absolute  z-10 ${theme === "dark" ? "opacity-0" : "opacity-100"} transition-all duration-300`}/>
+            <div>{theme}</div>
+        </button>
     );
 }
 
