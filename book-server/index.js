@@ -6,6 +6,7 @@ import routes from "./routes/book.routes.js";
 import userRouter from "./routes/user.routes.js";
 const app = express();
 import path from "path";
+import orderRouter from "./routes/order.routes.js";
 const __dirname = path.resolve();
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api", routes);
 app.use("/user", userRouter);
+app.use("/order", orderRouter);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
