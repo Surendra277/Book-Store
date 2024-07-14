@@ -1,8 +1,11 @@
 import React, {  useState,useEffect} from "react";
 import { File_BASE_URL } from "../config";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -64,11 +67,42 @@ const Cart = () => {
  
   const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
 
+  const handlePlaceOrder = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/order/placeorder", {
+        method: "POST",
+        headers: {
+          id: localStorage.getItem("id"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          order: cartItems.map((item) => ({
+            _id: item._id,
+          })),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to place order");
+      }
+
+      const data = await response.json();
+      setSuccessMessage(data.message);
+      setCartItems([]);
+      navigate("/order");
+    } catch (error) {
+      console.error("Error placing order:", error);
+      setError("Error placing order. Please try again later.");
+    }
+  };
+
 
   return (
     <div className="mx-auto my-24 flex max-w-4xl flex-col space-y-8 p-6 sm:p-12 bg-white shadow-2xl rounded-lg">
       <h2 className="text-4xl font-bold text-gray-800">Your Cart</h2>
       {error && <p className="text-red-500">{error}</p>}
+      {successMessage && <p className="text-green-500">{successMessage}</p>}
       {cartItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-12">
           <p className="text-lg font-medium text-gray-600 mb-4">
@@ -146,7 +180,7 @@ const Cart = () => {
             >
               Back to Shop
             </button>
-            <button
+            <button onClick={handlePlaceOrder}
               type="button"
               className="rounded-md bg-gray-800 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
             >

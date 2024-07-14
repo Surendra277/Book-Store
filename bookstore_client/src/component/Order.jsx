@@ -1,149 +1,135 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { File_BASE_URL } from "../config";
 
 const Order = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    address: '',
-    bookId: '',
-    quantity: 1,
-  });
+  const [orders, setOrders] = useState([]);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const [orderStatus, setOrderStatus] = useState('');
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/order/getorder", {
+          method: "GET",
+          headers: {
+            id: localStorage.getItem("id"),
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+        if (!response.ok) {
+          throw new Error("Failed to fetch orders");
+        }
+
+        const data = await response.json();
+        setOrders(data.orderData);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+        setError("Error fetching orders. Please try again later.");
+      }
+    };
+
+    fetchOrders();
+  }, []);
+
+  const calculateExpectedDeliveryDate = (orderDate) => {
+    const date = new Date(orderDate);
+    date.setDate(date.getDate() + 5);
+    return date.toLocaleDateString();
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const cancelOrder = async (orderId) => {
     try {
-      const response = await fetch('YOUR_API_ENDPOINT/orders', {
-        method: 'POST',
+      const response = await fetch(`http://localhost:3000/order/cancelorder/${orderId}`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          id: localStorage.getItem("id"),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
-        body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        setOrderStatus('Order placed successfully!');
-      } else {
-        setOrderStatus('Failed to place order.');
+      if (!response.ok) {
+        throw new Error("Failed to cancel order");
       }
+
+      const data = await response.json();
+      setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
+      console.log(data);
     } catch (error) {
-      console.error('Error:', error);
-      setOrderStatus('Error placing order.');
+      console.error("Error canceling order:", error);
+      setError("Error canceling order. Please try again later.");
     }
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">Order Book</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
+    <div className="mx-auto my-24 flex max-w-4xl flex-col space-y-8 p-6 sm:p-12 bg-white shadow-2xl rounded-lg">
+      <h2 className="text-4xl font-bold text-gray-800">Your Orders</h2>
+      {error && <p className="text-red-500">{error}</p>}
+      {orders.length === 0 ? (
+        <div className="flex flex-col items-center justify-center mt-12">
+          <p className="text-lg font-medium text-gray-600 mb-4">You have no orders.</p>
+          <button
+            type="button"
+            className="rounded-md bg-black px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+            onClick={() => navigate("/shop")}
+          >
+            Shop Now
+          </button>
         </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address:</label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="bookId" className="block text-sm font-medium text-gray-700">Book ID:</label>
-          <input
-            type="text"
-            id="bookId"
-            name="bookId"
-            value={formData.bookId}
-            onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">Quantity:</label>
-          <input
-            type="number"
-            id="quantity"
-            name="quantity"
-            value={formData.quantity}
-            onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            min="1"
-            required
-          />
-        </div>
-        <button type="submit" className="w-full py-2 px-4 bg-blue-600 text-white font-bold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          Place Order
-        </button>
-      </form>
-      {orderStatus && <p className="mt-4 text-center text-sm text-red-600">{orderStatus}</p>}
+      ) : (
+        <ul className="flex flex-col divide-y divide-gray-300">
+          {orders.map((order) => {
+            const { book } = order;
+            const imageUrl = book && book.imageURL ? `${File_BASE_URL}${book.imageURL}` : "";
+            const expectedDeliveryDate = calculateExpectedDeliveryDate(order.createdAt);
+
+            return (
+              <li key={order._id} className="flex flex-col py-8 sm:flex-row sm:justify-between">
+                <div className="flex w-full space-x-6">
+                  {imageUrl && (
+                    <img
+                      className="h-28 w-28 flex-shrink-0 rounded-md object-contain sm:h-36 sm:w-36"
+                      src={imageUrl}
+                      alt={book.title}
+                    />
+                  )}
+                  <div className="flex w-full flex-col justify-between">
+                    <div className="flex w-full justify-between pb-4">
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-semibold text-gray-800">{book.title}</h3>
+                        <p className="text-sm text-gray-500">by {book.author}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-xl font-semibold text-gray-800">₹{book.price}</p>
+                      </div>
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      <p>Order ID: {order._id}</p>
+                      <p>Order Date: {new Date(order.createdAt).toLocaleDateString()}</p>
+                      <p>Expected Delivery Date: {expectedDeliveryDate}</p>
+                      <p>Delivery Status: {order.deliveryStatus}</p>
+                    </div>
+                    <div className="text-right">
+                      <button
+                        type="button"
+                        className="mt-2 rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                        onClick={() => cancelOrder(order._id)}
+                      >
+                        Cancel Order
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };
 
 export default Order;
 
-
-
-// import React, { useEffect, useState } from 'react';
-
-// const PlaceOrder = ({ userId, bookId }) => {
-//   const [status, setStatus] = useState('');
-
-//   const placeOrder = async () => {
-//     try {
-//         useEffect(() => {
-//             fetch("http://localhost:3000/api/getbook")
-//               .then((res) => res.json())
-//               .then((data) => setBooks(data));
-//           }, []);
-//       setStatus('Order placed successfully!');
-//     } catch (err) {
-//       setStatus('Failed to place order.');
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={placeOrder}>Place Order</button>
-//       {status && <p>{status}</p>}
-//     </div>
-//   );
-// };
-
-// export default PlaceOrder;

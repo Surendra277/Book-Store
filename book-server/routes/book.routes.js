@@ -18,7 +18,4 @@ router.get("/getfavbooks",authenticateToken, favbooksController.getFavBooks);
 router.put("/addtocart",authenticateToken,cartController.addToCart);
 router.put("/removefromcart/:bookid",authenticateToken,cartController.removeFromCart  );
 router.get("/getcartbook",authenticateToken,cartController.getCartBooks);
-// router.post('/bestbook',favbooksController.storeFavBooks)
-// router.get('/bestbook',favbooksController.getFavBooks)
-
 export default router;

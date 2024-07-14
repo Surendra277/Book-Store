@@ -17,13 +17,14 @@ import AllOrders from "../Admin/Pages/AllOrders";
 import Layout from "../Admin/Layout/Layout";
 import ManageBook from "../Admin/Pages/ManageBook";
 import UserProfile from "../component/ProfilePage/UserProfile";
-import Wishlist from "../component/ProfilePage/Wishlist";
-import Order from "../component/ProfilePage/Order";
+// import Wishlist from "../component/ProfilePage/Wishlist";
 import Licensing from "../component/FooterPages/Licensing";
 import PrivacyPolicy from "../component/FooterPages/PrivacyPolicy";
 import Terms from "../component/FooterPages/Terms";
 import FavBook from "../Home/FavBook";
 import FavoriteBooks from "../Home/FavoriteBooks";
+import Order from "../component/Order";
+
 
 const router = createBrowserRouter([
   {
