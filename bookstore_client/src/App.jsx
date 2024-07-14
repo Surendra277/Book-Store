@@ -5,12 +5,13 @@ import { Outlet } from 'react-router-dom'
 import Navbar from './component/Navbar'
 import Footer from './component/Footer'
 
+
 function App() {
 
   return (
     <>
       <Navbar />
-      <div className='min-h-screen overflow-hidden'>
+      <div className='min-h-screen overflow-hidden font-sans'>
         <Outlet />
 
       </div>

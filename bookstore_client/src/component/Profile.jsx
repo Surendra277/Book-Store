@@ -22,7 +22,7 @@ const navigate =useNavigate();
     <div className=''>
       <Popover
         content={
-          <div className="max-w-sm mx-auto  bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl  w-80  h-96 border border-black">
+          <div className="max-w-sm mx-auto  bg-white  shadow-md overflow-hidden md:max-w-2xl  w-60  h-96 ">
             <div className="md:flex flex flex-col mt-5 px-5">
               {/* <div className="p-8"> */}
               <div className=" tracking-wide text-sm text-indigo-500 font-semibold m-auto">
@@ -31,9 +31,9 @@ const navigate =useNavigate();
               <hr style={{ height: '1px', border: 'none', width: '80%', backgroundColor: '#333', margin: '5px auto' }} />
               {/* <p className="block mt-1 text-lg leading-tight font-medium text-black">{user.email}</p> */}
 
-              <Link to="/userprofile" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaUser className='mx-3' /> Profile</Link>
-              <Link to="/order" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaBoxOpen className='mx-3' /> Orders</Link>
-              <Link to="/favorites" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaHeart className='mx-3' /> Favorites</Link>
+              <Link to="/userprofile" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaUser className='mx-3' /> Profile</Link><hr/>
+              <Link to="/order" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaBoxOpen className='mx-3' /> Orders</Link><hr/>
+              <Link to="/favorites" className="block flex py-2 mt-1 text-lg leading-tight font-medium text-black"> <FaHeart className='mx-3' /> Favourites</Link><hr/>
             <p className='block flex py-2 text-lg leading-tight font-medium text-black mx-3'><Darkmode /></p>
             
 

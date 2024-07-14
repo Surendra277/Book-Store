@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { File_BASE_URL } from "../config";
+import { Trash2 } from "lucide-react";
 const Favourites = () => {
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchFavourites = async () => 
-      {
+    const fetchFavourites = async () => {
       try {
         const response = await fetch("http://localhost:3000/api/getfavbooks", {
           headers: {
-            method:"GET",
+            method: "GET",
             // "Content-Type": "application/json",
             id: localStorage.getItem("id"),
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -23,7 +23,7 @@ const Favourites = () => {
         const data = await response.json();
         // localStorage.setItem('id',data.id)
         setFavourites(data.favorites);
-       
+
 
       } catch (error) {
         setError(error.message);
@@ -44,9 +44,9 @@ const Favourites = () => {
           Authorization: "Bearer " + localStorage.getItem("token"),
           bookid: bookId
         },
-            //  body: JSON.stringify({ bookId }),     
+        //  body: JSON.stringify({ bookId }),     
       });
-      
+
       if (!response.ok) {
         throw new Error("Failed to remove book from favourites");
       }
@@ -69,9 +69,9 @@ const Favourites = () => {
   }
 
   return (
-    <div className="mx-auto max-w-6xl p-8 sm:p-12 mt-10">
+    <div className="mx-auto  max-w-7xl p-8 sm:p-12 mt-10">
       <h2 className="text-4xl font-bold text-gray-800">Your Favourites</h2>
-       {favourites.length === 0 ? (
+      {favourites.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-12">
           <p className="text-lg font-medium text-gray-600 mb-4">
             Nothing to show here
@@ -84,28 +84,32 @@ const Favourites = () => {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+        <div className=" gap-8 mt-8 ">
           {favourites.map((book) => (
             <div
               key={book._id}
-              className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+              className="flex flex-row items-center border border-slate-200 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
             >
               <img
-                className="h-48 w-full object-cover rounded-md mb-4"
+                className="h-24 object-cover rounded-lg border border-black"
                 src={`${File_BASE_URL}${book.imageURL}`}
                 alt={book.title}
               />
-              <h3 className="text-xl font-semibold text-gray-800">
-                {book.title}
-              </h3>
-              <p className="text-gray-600 mb-4">by {book.author}</p>
-              <p className="text-lg font-semibold text-gray-800">₹{book.price}</p>
-              <button    onClick={() => removeFromFavourites(book._id)}
-                type="button"
-                className="mt-4 rounded-md bg-emerald-500 px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
-              >
-                Remove from Favourites
-              </button>
+              <div className="flex flex-col w-full">
+                <h3 className="text-xl font-semibold mb-3 px-5">
+                  {book.title}
+                </h3>
+                <div className="relative flex flex-row ">
+                  <p className="text-xl mb-2 px-5"><span className="font-bold">Author:</span>{book.author}</p>
+                  <p className="text-xl mb-2 px-5"><span className="font-bold">Price:</span>₹{book.price}</p>
+                  <button onClick={() => removeFromFavourites(book._id)}
+                    type="button"
+                    className=" rounded-md bg-emerald-500 px-4 py-2 text-sm font-semibold text-black shadow-sm hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 absolute right-0 "
+                  >
+                    <Trash2 className=" "/>
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
